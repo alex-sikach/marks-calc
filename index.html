@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>marks calc</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			margin: 3px;
+			position: relative;
+		}
+		*::selection {
+			background: #77767c;
+			color: #e2e2e2;
+		}
+		body {
+			min-height: 100vh;
+			overflow-x: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-image: linear-gradient(to right top, #598bd1, #d465c0, #dcb493);
+			background-repeat: repeat;
+		}
+		.box {
+			position: relative;
+			display: grid;
+			grid-template: 0.15fr 0.3fr 0.3fr 0.3fr / 1fr;
+			justify-content: center;
+			background: transparent;
+			border: 3px solid #000;
+			min-height: 35vh;
+			min-width: 40vw;
+			font-size: 1em;
+			max-width: 50vw;
+			border-radius: 20px;
+		}
+		.enter-div, .inp-marks-div, .towhatup-div, .up-get {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.enter-div {
+			margin-top: 1.3em;
+		}
+		.marks-text {
+			font-size: 2em;
+			font-weight: 300;
+			color: #402c31;
+		}
+		.inp-marks-div {
+		}
+		.inp-marks {
+			color: #cdbcdc;
+			border: none;
+			background: #5f474d;
+			height: 2em;
+			margin: 0px 15px;
+			font-size: 1em;
+			border-radius: 10px;
+			padding: 0 1em;
+			outline: none;
+		}
+		.inp-marks::placeholder {
+			color: #cdbcdc;
+			padding: 1em;
+			font-size: 1em;
+		}
+		.towhatup-div {
+		}
+		.up-text {
+			font-size: 2em;
+			color: #402c31;
+		}
+		.to-up {
+			border-radius: 10px;
+			outline: none;
+			color: #cdbcdc;
+			border: none;
+			background: #5f474d;
+			margin: 0 15px;
+			text-align: center;
+			width: max-content;
+			padding: 0.7vh;
+			font-size: 1em;
+		}
+		.get {
+			border-radius: 10px;
+			color: #cdbcdc;
+			background: #5f474d;
+			border: none;
+			font-size: 1em;
+			padding: 1vh;
+			cursor: pointer;
+		}
+		.up-get {
+			justify-content: center;
+		}
+		.variant {
+			display: flex;
+			align-items: center;
+			min-height: 7.5vh;
+			width: max-content;
+			justify-content: center;
+		}
+		.way {
+			display: flex;
+			justify-self: center;
+			height: 100%;
+			width: max-content;
+			align-items: center;
+		}
+		.way-text {
+			text-align: center;
+			font-size: 1.3em;
+		}
+		.way-text, .text > p { font-weight: 500; }
+		.text {
+			width: max-content;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.text > p {
+			width: max-content;
+			text-align: center;
+			font-size: 1.3em;
+		}
+		.variants {
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: center;
+			justify-content: center;
+		}
+		.variant::before {
+			content: '';
+			position: absolute;
+			height: 2px;
+			opacity: .5;
+			width: 80%;
+			left: 50%;
+			top: 0px;
+			transform: translateX(-50%);
+			background: #402c31;
+		}
+		.variant:last-child::before {
+			display: none;
+		}
+		@media  screen and (min-width: 900px) and (max-width: 1000px) {
+			.box {	font-size: .9em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 800px) and (max-width: 899.9999999px) {
+			.box {	font-size: .9em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 700px) and (max-width: 799.99999999px) {
+			.box {	font-size: 1em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 600px) and (max-width: 699.9999999px) {
+			.box {	font-size: .9em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 500px) and (max-width: 599.9999999px) {
+			.box {	font-size: .7em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 400px) and (max-width: 499.9999999px) {
+			.box {	font-size: .6em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 300px) and (max-width: 399.9999999px) {
+			.box {	font-size: .5em;	min-height: 20vh; }
+		}
+		@media  screen and (max-width: 299.9999999px) {
+			.box {	font-size: .35em;	min-height: 20vh; }
+		}
+		@media  screen and (min-width: 250px) and (max-width: 350px) {
+			.way-text, .text > p { font-size: 1.1em; }
+		}
+		@media  screen and  (max-width: 249.9999999999px) {
+			.way-text, .text > p { font-size: .9em; }
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="enter-div">
+			<p class="marks-text" style="height: max-content;width: max-content;">Enter your marks:</p>
+		</div>
+		<div class="inp-marks-div">
+			<input type="text" class="inp-marks" placeholder="5,4,5,5,3,4">
+		</div>
+		<div class="towhatup-div">
+			<p class="up-text" style="height: max-content;width: max-content;">To what mark<br>do you want to up?</p>
+		</div>
+		<div class="up-get">
+			<input type="number" id="" class="to-up" value="5" max="5" min="2">
+			<button class="get">Get it</button>
+		</div>
+		<div class="variants">
+		</div>
+	</div>
+
+	<!-- scripts -->
+	<script type="text/javascript">
+		const getbtn = document.querySelector('.get');
+		const inp = document.querySelector('.inp-marks');
+		// .60 хватает для новой оценки(4.60 = 5)
+		const integer = 0.60;
+		const remainder = 0.40;
+		getbtn.onclick = myGet;
+		function myGet()
+		{
+			//инпут type number (это оценка которую хочет получить пользователь)
+			const wanna = document.querySelector('.to-up');
+			//value этого инпута
+			const wannaValue = Number(wanna.value);
+			//оценки которые имеются у пользователя сейчас
+			let marksStr = inp.value;
+			let marksArr = marksStr.split(',');
+			//на данный момент у человека 0 оценок(чуть позже через цикл посчитаем их)
+			let currentQuanity = 0;
+			let currentSum = 0;
+			//изменяем текстовый формат на цисловой в массиве с оценками
+			marksArr = marksArr.map(m => Number(m));
+			//валидные-ли оценки введены ?
+			let is_valid = true;
+			//getting the quanity and the sum
+			for (let mark of marksArr)
+			{
+				currentQuanity++;
+				currentSum += mark;
+			}
+			//округляем до сотых средний бал
+			let currentAverage = Number((currentSum / currentQuanity).toFixed(2));
+			//объявляем переменные значение которых можно менять
+			let localQuanity = currentQuanity;
+			let localSum = currentSum;
+			let localAverage = currentAverage;
+			// console.log(`wanna: ${wannaValue}, have: ${currentAverage}`);
+			//проверяем чтобы желаемая оценка была адекватная( не меньше чем то что уже есть и всё такое)
+			if(wannaValue < currentAverage) {
+				is_valid = 'why';
+			} else if( ((Math.floor(currentAverage) + integer <= currentAverage) && (currentAverage < (Math.ceil(currentAverage) + integer)) && (wannaValue > Math.floor(currentAverage) + integer) && (wannaValue < Math.ceil(currentAverage) + integer)) || currentAverage === wannaValue ) {
+				is_valid = 'already';
+			} else if(wannaValue > 5) {
+				is_valid = 'chsv';
+			};
+			marksArr.forEach(mark =>
+			{
+				//если хоть 1 из оценок не удовлетворяет пятибальную систему счистления - значит невалидно
+				if((mark) < 1 || (mark) > 5 || isNaN(mark) === true) {
+					is_valid = false;
+				}
+			});
+			if(is_valid === false) {
+				alert('Таких оценок нет!');
+			} else if(is_valid === 'already') {
+				alert('Эта оценка уже у вас в кармане!');
+			} else if( is_valid === 'why') {
+				alert(`Твой средний бал: ${currentAverage}. Зачем ухудшать положение?)`);
+			} else if( is_valid === 'chsv') {
+				alert('Много хочешь!');
+			} else
+			//если всё нормально и оценки числовые - идём дальше
+			{
+				//создаем контейнер
+				let variant = document.createElement('div');
+				variant.classList.add('variant');
+				//потом левую часть (типо 3.67 - 5, если его средний бал 3.67 а хочет)
+				let way = document.createElement('div');
+				way.classList.add('way');
+
+				let wayText = document.createElement('p');
+				wayText.classList.add('way-text');
+				wayText.textContent = `${currentAverage} - ${wannaValue}:`;
+
+				way.appendChild(wayText);
+
+				//создаем контейнер для правой части где будут варианты(к примеру для 5 вам надо получить 5 пятерок или 8 четверок, ну в таком роде)
+				let text = document.createElement('div');
+				text.classList.add('text');
+
+				variant.appendChild(way);
+				//объявляем переменную которая будет считать сколько нужно получить оценку желаемую
+				let necQuanity = 0;
+				//проходим по аждой оценки которая может помочь(к примеру средний бал - 3.22 -> поможет и 4 и 5)
+				for(let j = 5; j > Math.floor(currentAverage); j--)
+				{
+					//очищаем переменные
+					localQuanity = Number(currentQuanity);
+					localSum = Number(currentSum);
+					localAverage = Number(currentAverage);
+						// console.log('нынешняя оценка - ' + j);
+
+					necQuanity = 0;
+					//если оценка может помочь(к примеру если хотим 5 то 4ками не поможешь)
+					if(wannaValue <= j) {
+						//пока не поднимемся до оценки котрую хотим
+						while(localAverage < (wannaValue-remainder))
+						{
+							// console.log('локальный цикл');
+							localQuanity++;
+							necQuanity++;
+							localSum += j;
+							localAverage = Number((localSum / localQuanity).toFixed(2));
+						}
+					}
+					//если хоть раз зашли в цикл - добавляем текст
+					if(necQuanity > 0) {
+
+						let texttext = document.createElement('p');
+						texttext.textContent = `You have to get ${necQuanity} "${j}" marks.`;
+
+						text.appendChild(texttext);
+
+					}
+				}
+				variant.appendChild(text);
+				document.querySelector('.variants').appendChild(variant);
+			}
+
+		}
+	</script>
+</body>
+</html>
