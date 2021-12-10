@@ -38,6 +38,7 @@
 			max-width: 50vw;
 			border-radius: 20px;
 		}
+		.marks-text, .up-text, .way-text, .text > p {color: #402c31;}
 		.enter-div, .inp-marks-div, .towhatup-div, .up-get {
 			display: flex;
 			justify-content: center;
@@ -49,7 +50,6 @@
 		.marks-text {
 			font-size: 2em;
 			font-weight: 300;
-			color: #402c31;
 		}
 		.inp-marks-div {
 		}
@@ -73,7 +73,6 @@
 		}
 		.up-text {
 			font-size: 2em;
-			color: #402c31;
 		}
 		.to-up {
 			border-radius: 10px;
@@ -149,6 +148,12 @@
 		.variant:last-child::before {
 			display: none;
 		}
+		@media  screen and (min-width: 500px) {
+			.way-text { font-size: 2em; }
+		}
+		@media  screen and (max-width: 499.999999px) and (min-width: 100px) {
+			.way-text { font-size: 1.5em; }
+		}
 		@media  screen and (min-width: 900px) and (max-width: 1000px) {
 			.box {	font-size: .80em;	min-height: 40vh; min-width: 40vw; }
 		}
@@ -173,8 +178,11 @@
 		@media  screen and (max-width: 299.9999999px) {
 			.box {	font-size: .60em;	min-height: 40vh; min-width: 70vw; background: blue; }
 		}
-		@media  screen and (min-width: 250px) and (max-width: 350px) {
-			.way-text, .text > p { font-size: 1.1em; }
+		@media  screen and (min-width: 250px) and (max-width: 400px) {
+			.text > p { font-size: .9em; }
+		}
+		@media  screen and (min-width: 250px) and (max-width: 400px) {
+			.way-text { font-size: 1.2em; }
 		}
 		@media  screen and  (max-width: 249.9999999999px) {
 			.way-text, .text > p { font-size: .9em; }
